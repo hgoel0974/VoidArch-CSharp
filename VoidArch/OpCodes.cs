@@ -116,6 +116,11 @@ namespace VoidArch
         /// </summary>
         public static OpCode Nop { get; private set; }
 
+        /// <summary>
+        /// Store a value into a register
+        /// </summary>
+        public static OpCode Mve { get; private set; }
+
         private static byte fromBinInt(uint num)
         {
             return Convert.ToByte(num.ToString(), 2);
@@ -227,7 +232,7 @@ namespace VoidArch
             LLe = new OpCode()
             {
                 Name = "lle",
-                ArgCount = 2,
+                ArgCount = 1,
                 Instruction = fromBinInt("01000"),
                 Size = 5
             };
@@ -235,7 +240,7 @@ namespace VoidArch
             SLe = new OpCode()
             {
                 Name = "sle",
-                ArgCount = 2,
+                ArgCount = 1,
                 Instruction = fromBinInt("11000"),
                 Size = 5
             };
@@ -277,6 +282,14 @@ namespace VoidArch
                 Name = "nop",
                 ArgCount = 0,
                 Instruction = fromBinInt("01111"),
+                Size = 5
+            };
+
+            Mve = new OpCode()
+            {
+                Name = "mve",
+                ArgCount = 2,
+                Instruction = fromBinInt("01010"),
                 Size = 5
             };
             #endregion
