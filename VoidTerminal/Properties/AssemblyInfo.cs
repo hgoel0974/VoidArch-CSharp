@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VoidArch")]
-[assembly: AssemblyDescription("C# Implementation of the void platform")]
+[assembly: AssemblyTitle("VoidTerminal")]
+[assembly: AssemblyDescription("Terminal for the void platform - interface to the rest of the system")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VoidArch")]
+[assembly: AssemblyProduct("VoidTerminal")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("87515915-5c00-4048-84e8-57fbb2fcc097")]
+[assembly: Guid("4df72742-75e5-4bf2-8d6c-12aeb8041c52")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.0.*")]
-[assembly: AssemblyFileVersion("0.0.*")]
+[assembly: AssemblyFileVersion("0.0.0.0")]
