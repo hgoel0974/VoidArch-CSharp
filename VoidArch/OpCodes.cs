@@ -121,6 +121,11 @@ namespace VoidArch
         /// </summary>
         public static OpCode Mve { get; private set; }
 
+        /// <summary>
+        /// Call a function from a shared library / framework
+        /// </summary>
+        public static OpCode Call { get; private set; }
+
         private static byte fromBinInt(uint num)
         {
             return Convert.ToByte(num.ToString(), 2);
@@ -290,6 +295,14 @@ namespace VoidArch
                 Name = "mve",
                 ArgCount = 2,
                 Instruction = fromBinInt("01010"),
+                Size = 5
+            };
+
+            Call = new OpCode()
+            {
+                Name = "call",
+                ArgCount = 0,
+                Instruction = fromBinInt("10101"),
                 Size = 5
             };
             #endregion

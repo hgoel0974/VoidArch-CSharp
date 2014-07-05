@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Assembler.cs" />
     <Compile Include="Disassembler.cs" />
+    <Compile Include="Linker.cs" />
     <Compile Include="MekaX\MekaX.cs" />
     <Compile Include="OpCodes.cs" />
     <Compile Include="Registers.cs" />

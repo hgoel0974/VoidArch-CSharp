@@ -83,6 +83,12 @@ namespace VoidTerminal
 
                     #endregion
                 }
+                else if(@params[0] == "vlink")
+                {
+                    #region Void Linker
+
+                    #endregion
+                }
                 else if (@params[0] == "help" || @params[0] == "?")
                 {
                     #region Help
@@ -94,6 +100,7 @@ namespace VoidTerminal
                     Console.WriteLine("\t{0}\t:\t{1}", "vdasm", "Invoke the void disassembler");
                     Console.WriteLine("\t{0}\t:\t{1}", "void", "Invoke the void VM");
                     Console.WriteLine("\t{0}\t:\t{1}", "mekax", "Invoke the MekaX compiler");
+                    Console.WriteLine("\t{0}\t:\t{1}", "vlink", "Invoke the void linker");
 
                     #endregion
                 }

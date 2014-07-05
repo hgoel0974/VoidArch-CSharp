@@ -36,7 +36,7 @@ namespace VoidArch
 
     public static class Registers
     {
-        public static byte[] DefaultValue = BitConverter.GetBytes(0xDEADBEEF);
+        public static byte[] DefaultValue = BitConverter.GetBytes(0xDECEA5ED);
 
         private static byte[] GetBArray(RegisterTypes t)
         {
