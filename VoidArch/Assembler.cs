@@ -17,9 +17,9 @@ namespace VoidArch
         public static uint BaseLoadAddress = DefaultBaseLoadAddress;
 
         /// <summary>
-        /// The default base address of the code = 0x5CA1AB1E
+        /// The default base address of the code = 0x0
         /// </summary>
-        public const uint DefaultBaseLoadAddress = 0x5CA1AB1E;
+        public const uint DefaultBaseLoadAddress = 0x0;
 
         /// <summary>
         /// Expands macros and simplifies code
@@ -29,6 +29,31 @@ namespace VoidArch
         private static string ExpandAndSimplify(string code)
         {
             //Generate temporary offsets relative to the base load point of the code
+            string[] parts = code.Split(';', ':');
+            List<uint> offsets = new List<uint>();
+
+            Dictionary<string, int> FunctionTable = new Dictionary<string, int>();
+
+            for (int c = 0; c < parts.Length; c++)
+            {
+                if (parts[c].StartsWith("func "))
+                {
+                    FunctionTable[parts[c].Replace("func ", string.Empty).Trim()] = c;
+                    parts[c] = "nop";   //All function declarations are swapped out for nops
+                }
+                if (parts[c] != string.Empty) parts[c] = parts[c].Trim();
+            }
+
+            string output = "";
+
+            for (int c = 0; c < parts.Length; c++)
+            {
+                if(parts[c] != string.Empty)output += parts[c].ToLowerInvariant() + ";\n";
+            }
+
+            output = output.Remove(output.Length - 1);
+
+            return output;
         }
 
         /// <summary>
@@ -67,7 +92,7 @@ namespace VoidArch
                     OpCode opcode;
                     try
                     {
-                        opcode = (OpCode)typeof(OpCodes).GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static).Single(f => ((OpCode)f.GetValue(null)).Name == parts[ln].Trim().Split(' ')[0].Trim()).GetValue(null);
+                        opcode = (OpCode)typeof(OpCodes).GetProperties().Single(f => ((OpCode)f.GetValue(null)).Name == parts[ln].Trim().Split(' ')[0].Trim()).GetValue(null);
                     }
                     catch (Exception)
                     {
@@ -94,7 +119,12 @@ namespace VoidArch
                             else
                             {
                                 //Add the register id
-                                Register arg = (Register)typeof(Register).GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static).Single(f => ((Register)f.GetValue(null)).Name == parts[ln].Trim().Split(' ')[c + 1].Trim()).GetValue(null);
+                                Registers a = new Registers();
+                                Register arg = (Register)typeof(Registers).GetFields().Single(f =>
+                                {
+                                    if (f.GetValue(null).GetType().Name.Contains("Byte")) return false;
+                                    return ((Register)f.GetValue(null)).Name == parts[ln].Trim().Split(' ')[c + 1].Trim();
+                                }).GetValue(null);
                                 compiled.Add(arg.Id);
                             }
                         }

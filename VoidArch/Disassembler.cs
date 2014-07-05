@@ -21,7 +21,7 @@ namespace VoidArch
                 OpCode opcode;
                 try
                 {
-                    opcode = (OpCode)typeof(OpCodes).GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static).Single(f => ((OpCode)f.GetValue(null)).Instruction == code[pos]).GetValue(null);
+                    opcode = (OpCode)typeof(OpCodes).GetProperties().Single(f => ((OpCode)f.GetValue(null)).Instruction == code[pos]).GetValue(null);
                 }
                 catch (Exception)
                 {
@@ -36,13 +36,18 @@ namespace VoidArch
                 {
                     for(int c = 0;c < opcode.ArgCount; c++)
                     {
-                        if(opcode.Name == "mve")
+                        if(opcode.Name == "mve" && c == 0)
                         {
                             codeStr += BitConverter.ToInt64(code, pos).ToString() + " ";
+                            pos += 7;
                         }
                         else
                         {
-                            Register arg = (Register)typeof(Register).GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static).Single(f => ((Register)f.GetValue(null)).Id == code[pos]).GetValue(null);
+                            Register arg = (Register)typeof(Registers).GetFields().Single(f =>
+                            {
+                                if (f.GetValue(null).GetType().Name.Contains("Byte")) return false;
+                                return ((Register)f.GetValue(null)).Id == code[pos];
+                            }).GetValue(null); 
                             codeStr += arg.Name + " ";
                         }
                         pos++;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -62,13 +63,13 @@ namespace VoidTerminal
                 else if (@params[0] == "vasm")
                 {
                     #region Void Assembler
-
+                    File.WriteAllBytes(@params[2], Assembler.Assemble(File.ReadAllText(@params[1])));
                     #endregion
                 }
                 else if (@params[0] == "vdasm")
                 {
                     #region Void Disassembler
-
+                    File.WriteAllText(@params[2], Disassembler.Disassemble(File.ReadAllBytes(@params[1])));
                     #endregion
                 }
                 else if (@params[0] == "void")
@@ -88,6 +89,13 @@ namespace VoidTerminal
                     #region Void Linker
 
                     #endregion
+                }else if(@params[0] == "edit")
+                {
+                    Process p = new Process();
+                    p.StartInfo.FileName = "notepad";
+                    p.StartInfo.Arguments = @params[1];
+                    p.Start();
+                    p.WaitForExit();
                 }
                 else if (@params[0] == "help" || @params[0] == "?")
                 {
@@ -101,6 +109,7 @@ namespace VoidTerminal
                     Console.WriteLine("\t{0}\t:\t{1}", "void", "Invoke the void VM");
                     Console.WriteLine("\t{0}\t:\t{1}", "mekax", "Invoke the MekaX compiler");
                     Console.WriteLine("\t{0}\t:\t{1}", "vlink", "Invoke the void linker");
+                    Console.WriteLine("\t{0}\t:\t{1}", "edit", "Open the system text editor with specified file");
 
                     #endregion
                 }

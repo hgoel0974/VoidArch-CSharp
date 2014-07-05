@@ -20,7 +20,7 @@ namespace VoidArch
             set
             {
                 byte[] tmp = new byte[value];
-                Data.CopyTo(tmp, 0);
+                if(Data != null)Data.CopyTo(tmp, 0);
                 Data = tmp;
             }
         }
@@ -34,7 +34,7 @@ namespace VoidArch
         SByte = 6, UByte = 7 
     }
 
-    public static class Registers
+    public class Registers
     {
         public static byte[] DefaultValue = BitConverter.GetBytes(0xDECEA5ED);
 
@@ -260,7 +260,7 @@ namespace VoidArch
             #region Argument Registers
             A0 = new Register()
             {
-                Name = "g0",
+                Name = "a0",
                 Id = 12,
                 Length = 4,
                 Data = DefaultValue
@@ -268,7 +268,7 @@ namespace VoidArch
 
             A1 = new Register()
             {
-                Name = "g1",
+                Name = "a1",
                 Id = 13,
                 Length = 4,
                 Data = DefaultValue
@@ -276,7 +276,7 @@ namespace VoidArch
 
             A2 = new Register()
             {
-                Name = "g2",
+                Name = "a2",
                 Id = 14,
                 Length = 4,
                 Data = DefaultValue
@@ -284,7 +284,7 @@ namespace VoidArch
 
             A3 = new Register()
             {
-                Name = "g3",
+                Name = "a3",
                 Id = 15,
                 Length = 4,
                 Data = DefaultValue
@@ -292,7 +292,7 @@ namespace VoidArch
 
             A4 = new Register()
             {
-                Name = "g4",
+                Name = "a4",
                 Id = 16,
                 Length = 4,
                 Data = DefaultValue
@@ -302,7 +302,7 @@ namespace VoidArch
             #region Argument Register Types
             At0 = new Register()
             {
-                Name = "gt0",
+                Name = "at0",
                 Id = 17,
                 Length = 1,
                 Data = GetBArray(RegisterTypes.UInt)
@@ -310,7 +310,7 @@ namespace VoidArch
 
             At1 = new Register()
             {
-                Name = "gt1",
+                Name = "at1",
                 Id = 18,
                 Length = 1,
                 Data = GetBArray(RegisterTypes.UInt)
@@ -318,7 +318,7 @@ namespace VoidArch
 
             At2 = new Register()
             {
-                Name = "gt2",
+                Name = "at2",
                 Id = 19,
                 Length = 1,
                 Data = GetBArray(RegisterTypes.UInt)
@@ -326,7 +326,7 @@ namespace VoidArch
 
             At3 = new Register()
             {
-                Name = "gt3",
+                Name = "at3",
                 Id = 20,
                 Length = 1,
                 Data = GetBArray(RegisterTypes.UInt)
@@ -334,7 +334,7 @@ namespace VoidArch
 
             At4 = new Register()
             {
-                Name = "gt4",
+                Name = "at4",
                 Id = 21,
                 Length = 1,
                 Data = GetBArray(RegisterTypes.UInt)

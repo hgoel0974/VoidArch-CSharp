@@ -142,168 +142,168 @@ namespace VoidArch
             {
                 Name = "push",
                 ArgCount = 1,
-                Instruction = fromBinInt(00000),
-                Size = 5
+                Instruction = 0,
+                Size = 8
             };
 
             Pop = new OpCode()
             {
                 Name = "pop",
                 ArgCount = 1,
-                Instruction = fromBinInt(10000),
-                Size = 5
+                Instruction = 1,
+                Size = 8
             };
 
             Eq = new OpCode()
             {
                 Name = "eq",
                 ArgCount = 0,
-                Instruction = fromBinInt(11000),
-                Size = 5
+                Instruction = 2,
+                Size = 8
             };
 
             Lt = new OpCode()
             {
                 Name = "lt",
                 ArgCount = 0,
-                Instruction = fromBinInt(11100),
-                Size = 5
+                Instruction = 3,
+                Size = 8
             };
 
             Add = new OpCode()
             {
                 Name = "add",
                 ArgCount = 0,
-                Instruction = fromBinInt(11110),
-                Size = 5
+                Instruction = 4,
+                Size = 8
             };
 
             Sub = new OpCode()
             {
                 Name = "sub",
                 ArgCount = 0,
-                Instruction = fromBinInt(11111),
-                Size = 5
+                Instruction = 5,
+                Size = 8
             };
 
             Mul = new OpCode()
             {
                 Name = "mul",
                 ArgCount = 0,
-                Instruction = fromBinInt("01111"),
-                Size = 5
+                Instruction = 6,
+                Size = 8
             };
 
             Div = new OpCode()
             {
                 Name = "div",
                 ArgCount = 0,
-                Instruction = fromBinInt("00111"),
-                Size = 5
+                Instruction = 7,
+                Size = 8
             };
 
             And = new OpCode()
             {
                 Name = "and",
                 ArgCount = 0,
-                Instruction = fromBinInt("00011"),
-                Size = 5
+                Instruction = 8,
+                Size = 8
             };
 
             Or = new OpCode()
             {
                 Name = "or",
                 ArgCount = 0,
-                Instruction = fromBinInt("00001"),
-                Size = 5
+                Instruction = 9,
+                Size = 8
             };
 
             Xor = new OpCode()
             {
                 Name = "xor",
                 ArgCount = 0,
-                Instruction = fromBinInt("00010"),
-                Size = 5
+                Instruction = 10,
+                Size = 8
             };
 
             Not = new OpCode()
             {
                 Name = "not",
                 ArgCount = 0,
-                Instruction = fromBinInt("00100"),
-                Size = 5
+                Instruction = 11,
+                Size = 8
             };
 
             LLe = new OpCode()
             {
                 Name = "lle",
                 ArgCount = 1,
-                Instruction = fromBinInt("01000"),
-                Size = 5
+                Instruction = 12,
+                Size = 8
             };
 
             SLe = new OpCode()
             {
                 Name = "sle",
                 ArgCount = 1,
-                Instruction = fromBinInt("11000"),
-                Size = 5
+                Instruction = 13,
+                Size = 8
             };
 
             LSh = new OpCode()
             {
                 Name = "lsh",
                 ArgCount = 1,
-                Instruction = fromBinInt("01100"),
-                Size = 5
+                Instruction = 14,
+                Size = 8
             };
 
             RSh = new OpCode()
             {
                 Name = "rsh",
                 ArgCount = 1,
-                Instruction = fromBinInt("00110"),
-                Size = 5
+                Instruction = 15,
+                Size = 8
             };
 
             LRS = new OpCode()
             {
                 Name = "lrs",
                 ArgCount = 1,
-                Instruction = fromBinInt("01110"),
-                Size = 5
+                Instruction = 16,
+                Size = 8
             };
 
             RRS = new OpCode()
             {
                 Name = "rrs",
                 ArgCount = 1,
-                Instruction = fromBinInt("00111"),
-                Size = 5
+                Instruction = 17,
+                Size = 8
             };
 
             Nop = new OpCode()
             {
                 Name = "nop",
                 ArgCount = 0,
-                Instruction = fromBinInt("01111"),
-                Size = 5
+                Instruction = 18,
+                Size = 8
             };
 
             Mve = new OpCode()
             {
                 Name = "mve",
                 ArgCount = 2,
-                Instruction = fromBinInt("01010"),
-                Size = 5
+                Instruction = 19,
+                Size = 8
             };
 
             Call = new OpCode()
             {
                 Name = "call",
                 ArgCount = 0,
-                Instruction = fromBinInt("10101"),
-                Size = 5
+                Instruction = 20,
+                Size = 8
             };
             #endregion
         }
