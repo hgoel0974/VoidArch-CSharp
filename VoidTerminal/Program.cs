@@ -92,8 +92,7 @@ namespace VoidTerminal
                 }else if(@params[0] == "edit")
                 {
                     Process p = new Process();
-                    p.StartInfo.FileName = "notepad";
-                    p.StartInfo.Arguments = @params[1];
+                    p.StartInfo.FileName = @params[1];
                     p.Start();
                     p.WaitForExit();
                 }

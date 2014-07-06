@@ -11,5 +11,19 @@ namespace VoidArch
     /// </summary>
     public class VM
     {
+        public static byte[] Memory;
+        public static long MemoryAmount = 48 * 1024 * 1024;
+
+        static VM()
+        {
+            Memory = new byte[MemoryAmount];
+        }
+
+        public static void Run(byte[] code)
+        {
+
+        }
+
+
     }
 }

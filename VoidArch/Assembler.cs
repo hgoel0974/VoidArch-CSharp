@@ -79,9 +79,9 @@ namespace VoidArch
             for (int ln = 0; ln < parts.Length; ln++)
             {
 
-                if (parts[ln].StartsWith(".") | parts[ln].EndsWith(":"))
+                if (parts[ln].StartsWith("."))
                 {
-                    #region Macro and function call translator
+                    #region Macro translator
 
                     #endregion
                 }
@@ -119,7 +119,6 @@ namespace VoidArch
                             else
                             {
                                 //Add the register id
-                                Registers a = new Registers();
                                 Register arg = (Register)typeof(Registers).GetFields().Single(f =>
                                 {
                                     if (f.GetValue(null).GetType().Name.Contains("Byte")) return false;

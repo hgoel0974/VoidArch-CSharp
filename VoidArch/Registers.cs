@@ -49,6 +49,21 @@ namespace VoidArch
         public static Register PC;
 
         /// <summary>
+        /// Main stack pointer
+        /// </summary>
+        public static Register SP;
+
+        /// <summary>
+        /// Stack pointer A
+        /// </summary>
+        public static Register SP0;
+
+        /// <summary>
+        /// Stack pointer B
+        /// </summary>
+        public static Register SP1;
+
+        /// <summary>
         /// Return Address
         /// </summary>
         public static Register RA;
@@ -168,6 +183,32 @@ namespace VoidArch
             {
                 Name = "ra",
                 Id = 1,
+                Length = 4,
+                Data = DefaultValue
+            };
+            #endregion
+
+            #region Stack Pointers
+            SP = new Register()
+            {
+                Name = "sp",
+                Id = 22,
+                Length = 4,
+                Data = DefaultValue
+            };
+
+            SP0 = new Register()
+            {
+                Name = "sp0",
+                Id = 23,
+                Length = 4,
+                Data = DefaultValue
+            };
+
+            SP1 = new Register()
+            {
+                Name = "sp1",
+                Id = 24,
                 Length = 4,
                 Data = DefaultValue
             };
