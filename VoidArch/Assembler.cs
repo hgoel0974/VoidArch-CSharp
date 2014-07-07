@@ -48,7 +48,7 @@ namespace VoidArch
 
             for (int c = 0; c < parts.Length; c++)
             {
-                if(parts[c] != string.Empty)output += parts[c].ToLowerInvariant() + ";\n";
+                if (parts[c] != string.Empty) output += parts[c].ToLowerInvariant() + ";\n";
             }
 
             output = output.Remove(output.Length - 1);
@@ -114,7 +114,9 @@ namespace VoidArch
                                 if (opcode.Name != "mve") throw new Exception("Invalid Parameter to instruction '" + opcode.Name + "' @ " + (ln + 1).ToString());
 
                                 //MVE is the only instruction which accepts numerical values
-                                compiled.AddRange(BitConverter.GetBytes(num));
+
+                                //Make sure number is little endian
+                                compiled.AddRange(num.GetBytes());
                             }
                             else
                             {

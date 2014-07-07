@@ -16,7 +16,7 @@ namespace VoidArch
             string codeStr = "";
 
             int pos = 0;
-            while(pos < code.Length)
+            while (pos < code.Length)
             {
                 OpCode opcode;
                 try
@@ -31,14 +31,18 @@ namespace VoidArch
                 codeStr += opcode.Name + " ";
                 //Next byte
                 pos++;
-                
-                if(opcode.ArgCount > 0)
+
+                if (opcode.ArgCount > 0)
                 {
-                    for(int c = 0;c < opcode.ArgCount; c++)
+                    for (int c = 0; c < opcode.ArgCount; c++)
                     {
-                        if(opcode.Name == "mve" && c == 0)
+                        if (opcode.Name == "mve" && c == 0)
                         {
-                            codeStr += BitConverter.ToInt64(code, pos).ToString() + " ";
+                            codeStr += BitConverter.ToInt64(BitConverter.IsLittleEndian ?
+                                code :
+                                code.Reverse().ToArray()
+                                , pos).ToString() + " ";
+
                             pos += 7;
                         }
                         else
@@ -47,7 +51,7 @@ namespace VoidArch
                             {
                                 if (f.GetValue(null).GetType().Name.Contains("Byte")) return false;
                                 return ((Register)f.GetValue(null)).Id == code[pos];
-                            }).GetValue(null); 
+                            }).GetValue(null);
                             codeStr += arg.Name + " ";
                         }
                         pos++;
